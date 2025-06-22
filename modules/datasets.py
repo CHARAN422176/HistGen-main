@@ -29,7 +29,8 @@ class PathologySingleImageDataset(BaseDataset):
     def __getitem__(self, idx):
         example = self.examples[idx]
         image_id = example['id']
-        image_path = os.path.join(self.image_dir, image_id + '.pt')
+        # image_path = os.path.join(self.image_dir, image_id + '.pt')
+        image_path = os.path.join(self.image_dir, image_id, "0.png")
         image = torch.load(image_path)
         report_ids = example['ids']
         report_masks = example['mask']
