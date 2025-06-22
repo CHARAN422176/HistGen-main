@@ -6,7 +6,7 @@ prototype_num=512
 
 python main_test_AllinOne.py \
     --image_dir /path/to/feature \
-    --ann_path /path/to/json \
+    --ann_path /path_/to/json \
     --dataset_name wsi_report \
     --model_name $model \
     --max_seq_length $max_length \
