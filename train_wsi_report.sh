@@ -5,9 +5,9 @@ region_size=96
 prototype_num=512
 
 python main_train_AllinOne.py \
-    --image_dir /path/to/feature \
-    --ann_path /path/to/json \
-    --dataset_name wsi_report \
+    --image_dir '/kaggle/input/iu-xray/iu_xray/images' \
+    --ann_path '/kaggle/input/iu-xray/iu_xray/annotation.json' \
+    --dataset_name 'iu_xray' \
     --model_name $model \
     --max_seq_length $max_length \
     --num_layers 3 \
@@ -22,7 +22,7 @@ python main_train_AllinOne.py \
     --cmm_dim 512 \
     --region_size $region_size \
     --prototype_num $prototype_num \
-    --save_dir /path/to/storage \
+    --save_dir '/kaggle/working/results/HistGen' \
     --step_size 1 \
     --gamma 0.8 \
     --seed 456789 \
