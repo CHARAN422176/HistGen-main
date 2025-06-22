@@ -3,6 +3,7 @@ import json
 import torch
 from PIL import Image
 from torch.utils.data import Dataset
+import torchvision.transforms as transforms
 
 
 class BaseDataset(Dataset):
@@ -25,13 +26,24 @@ class BaseDataset(Dataset):
     def __len__(self):
         return len(self.examples)
     
+# Define a transform (resize + to tensor)
+transform = transforms.Compose([
+    transforms.Resize((224, 224)),  # Or your desired size
+    transforms.ToTensor()
+])
+    
 class PathologySingleImageDataset(BaseDataset):
     def __getitem__(self, idx):
         example = self.examples[idx]
         image_id = example['id']
         # image_path = os.path.join(self.image_dir, image_id + '.pt')
         image_path = os.path.join(self.image_dir, image_id, "0.png")
-        image = torch.load(image_path)
+        # image = torch.load(image_path)
+        image = Image.open(image_path).convert("RGB")
+        if self.transform:
+            image = self.transform(image)
+        else:
+            image = transform(image)  # fallback transform
         report_ids = example['ids']
         report_masks = example['mask']
         seq_length = len(report_ids)
