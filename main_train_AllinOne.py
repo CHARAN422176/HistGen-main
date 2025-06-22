@@ -37,7 +37,7 @@ def parse_agrs():
     parser.add_argument('--visual_extractor', type=str, default='resnet101', help='the visual extractor to be used.')
     parser.add_argument('--visual_extractor_pretrained', type=bool, default=True, help='whether to load the pretrained visual extractor')
     # Model settings (for Transformer)
-    parser.add_argument('--d_model', type=int, default=512, help='the dimension of Transformer.')
+    parser.add_argument('--d_model', type=int, default=256, help='the dimension of Transformer.')
     parser.add_argument('--d_ff', type=int, default=512, help='the dimension of FFN.')
     parser.add_argument('--d_vf', type=int, default=2048, help='the dimension of the patch features.')
     parser.add_argument('--num_heads', type=int, default=8, help='the number of heads in Transformer.')
